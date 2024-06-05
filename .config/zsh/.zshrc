@@ -20,25 +20,21 @@ bindkey '^e' autosuggest-accept
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+export PATH=$PATH:$PNPM_HOME
 
 # NVM
 export NVM_DIR="$HOME/.config/nvm"
-export NODE_DIR=$NVM_DIR/versions/node/v20.12.2/bin
+export NODE_DIR="$NVM_DIR/versions/node/v20.12.2/bin"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" --no-use # no-use flag makes it fast, however it autoloads a particular version of node
  
 # Go
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 
-export PATH=$HOME/.local/bin:/usr/local/go/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.rd/bin:$NODE_DIR:$PATH
-
 # neovim
 export PATH="$PATH:/opt/nvim-linux64/bin"
+
+export PATH=$HOME/.local/bin:/usr/local/go/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.rd/bin:$NODE_DIR:$PATH
 
 eval "$(zoxide init zsh)"
 
