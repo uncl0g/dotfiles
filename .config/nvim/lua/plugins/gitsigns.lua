@@ -19,6 +19,8 @@ return {
       vim.keymap.set('n', '<leader>hd', gs.diffthis,{ desc ='[H]unk diff', buffer = bufnr })
       vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end)
 
+      vim.keymap.set('n', '<leader>gb', gs.toggle_current_line_blame)
+
       -- Remove sign column highlight
       vim.api.nvim_set_hl(0, 'SignColumn', { link = 'NONE' })
     end
