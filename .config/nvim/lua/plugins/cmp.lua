@@ -1,11 +1,13 @@
 return {
   'hrsh7th/nvim-cmp',
   dependencies = {
-    -- Engine
+    -- Snippet Engine
     'L3MON4D3/LuaSnip',
 
     -- Sources
     'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-cmdline',
     'saadparwaiz1/cmp_luasnip',
 
     -- Snippets
@@ -32,6 +34,23 @@ return {
           luasnip.lsp_expand(args.body)
         end,
       },
+      experimental = {
+        ghost_text = true,
+      },
     }
+
+    cmp.setup.cmdline({ '/', '?' }, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' }
+      }
+    })
+
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'cmdline' }
+      }),
+    })
   end
 }
